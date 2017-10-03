@@ -18,11 +18,16 @@
         name: remnux/crits
         state: present
 
+    - name: create crits data directory
+      file: path=~/crits-data state=directory
+
     - name: run crits
       docker_container:
         name: crits
         state: started
         restart: yes
         image: remnux/crits
-        published_ports: 80:80
+        published_ports: 8443:8443
+        volumes:
+          - ~/crits-data:/home/nonroot/workdir
 
