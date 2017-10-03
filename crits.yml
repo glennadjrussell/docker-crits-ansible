@@ -4,8 +4,8 @@
     - name: install docker-py
       pip:
         name: "{{ item }}"
-        with_items:
-        - docker-py
+      with_items:
+      - docker-py
 
     - name: get crits image
       docker_image:
